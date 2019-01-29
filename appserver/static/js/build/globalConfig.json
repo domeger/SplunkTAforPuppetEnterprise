@@ -463,7 +463,7 @@
                         {
                             "type": "text",
                             "help": "Port where PuppetDB can be contacted (HTTPS 8081, HTTP: 8080).",
-                            "defaultValue":"8081",
+                            "defaultValue": "8081",
                             "validators": [
                                 {
                                     "type": "string",
