@@ -644,7 +644,7 @@
                         },
                         {
                             "type": "text",
-                            "help": "Time interval of input in seconds.",
+                            "help": "Time interval for fetching data (in seconds).",
                             "defaultValue": 60,
                             "validators": [
                                 {
