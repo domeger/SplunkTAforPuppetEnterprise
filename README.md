@@ -1,5 +1,7 @@
 # Splunk Add-on for Puppet Enterprise
 
+The Splunk Add-on for Puppet Enterprise collects machine data from using the PuppetDB API.
+
 ## Requirements to run this add-on
 
 - Splunk Enterprise 7.0+
@@ -8,11 +10,19 @@
 
 ## Installation Steps
 
-1. First generate a token from Puppet Enterprise in the shell. Make sure to take into account how long you have the token generated. We recommend to at least set it too 12 Months. We will be putting this in the Add-on Menu to help you alert when it about to expire. 
+1. First generate an authentication token for Puppet Enterprise. Make sure to specify a suffeciently long lifetime for the token. We recommend at least 12 months. Detailed instructions are available from the [Puppet Enterprise documentation](https://puppet.com/docs/pe/latest/rbac_token_auth_intro.html#generate-a-token-using-the-api-endpoint).
 
-```shell
-curl -k -X POST -H 'Content-Type: application/json' -d '{"login": "", "password": "","lifetime": "9y" }' https://$:4433/rbac-api/v1/auth/token
-```
+    Sample command:
+
+    ```shell
+    curl -k -X POST -H 'Content-Type: application/json' -d '{"login": "", "password": "","lifetime": "9y" }' https://$:4433/rbac-api/v1/auth/token
+    ```
+
+    You'll get back something that looks like `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`. Keep this handy for the next step.
+
+1. Navigate to the Add-on within the Splunk console.
+1. Select the "Create New Input" on the "Data inputs" view. Follow the instructions in the forms to connect the add-on to your Puppet Enterprise installation. It asks for things like server name, authentication token, and so on.
+1. Install the companion [app](https://github.com/puppetlabs/SplunkAppforPuppetEnterprise/) into Splunk to visualize data ingested from Puppet Enterprise.
 
 ## Version history
 
